@@ -3,25 +3,25 @@ package it.polito.tdp.libretto;
 import java.time.LocalDate; //per lavorare con le date in modo corretto
 
 public class Voto {
-	private int voto;
+	private int punti;
 	private String nomeCorso;
 	private LocalDate data;             //DATE & CALENDAR = GESTIONE DATA FINO JAVA 6
 	
 	//COSTRUTTORE
 	public Voto(int voto, String nomeCorso, LocalDate data) {
-		this.voto = voto;
+		this.punti = voto;
 		this.nomeCorso = nomeCorso;
 		this.data = data;
 	}
 
 
 	//GET&SETTER
-	public int getVoto() {
-		return voto;
+	public int getPunti() {
+		return punti;
 	}
 
-	public void setVoto(int voto) {
-		this.voto = voto;
+	public void setPunti(int voto) {
+		this.punti = voto;
 	}
 
 	public String getNomeCorso() {
@@ -43,7 +43,7 @@ public class Voto {
 
 	@Override
 	public String toString() {
-		return "Voto [voto=" + voto + ", nomeCorso=" + nomeCorso + ", data=" + data + "]";
+		return "Voto [punti=" + punti + ", nomeCorso=" + nomeCorso + ", data=" + data + "]";
 	}
 	
 	
