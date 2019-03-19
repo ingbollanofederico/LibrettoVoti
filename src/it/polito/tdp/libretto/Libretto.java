@@ -16,9 +16,14 @@ public class Libretto {
 	 * AGGIUNGE UN NUOVO VOTO AL LIBRETTO
 	 * @param voto il {@link Voto} da aggiungere
 	 */
-	public void add(Voto voto) {
-		this.voti.add(voto);
+	public boolean add(Voto voto) {
 		
+		if(!this.esisteGiaVoto(voto) && !this.votoConflitto(voto)) {
+			this.voti.add(voto);
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 
@@ -86,5 +91,25 @@ public class Libretto {
 			return false; 
 		}
 	}
+	
+	public boolean votoConflitto(Voto v) {
+		Voto trovato = this.CercaVoto(v.getNomeCorso());
+		
+		if(trovato==null) {
+			return false;
+		}
+		
+		if(trovato.getPunti()!=v.getPunti()) {
+			return true;
+		}else {
+			return false; 
+		}
+	}
+
+
+	public String toString() {
+		return this.voti.toString();
+	}
+	
 
 }
