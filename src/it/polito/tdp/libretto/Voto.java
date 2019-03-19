@@ -45,6 +45,36 @@ public class Voto {
 	public String toString() {
 		return "Voto [punti=" + punti + ", nomeCorso=" + nomeCorso + ", data=" + data + "]";
 	}
+
+
+	//HASH CODE + EQUALS CON PARAMETRO CHE VOGLIO CHE SIA VERIFICATO QUANDO LANCIATO EQUALS!
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((nomeCorso == null) ? 0 : nomeCorso.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) { //HO COSTRUITO UN EQUALS DICENDO CHE LA COSA CHE VOGLIO CHE SIA VERIFICATA SIA SOLO NOME CORSO!!
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Voto other = (Voto) obj;
+		if (nomeCorso == null) {
+			if (other.nomeCorso != null)
+				return false;
+		} else if (!nomeCorso.equals(other.nomeCorso))
+			return false;
+		return true;
+	}
+
+
 	
 	
 	

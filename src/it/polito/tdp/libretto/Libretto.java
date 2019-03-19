@@ -46,15 +46,45 @@ public class Libretto {
 	 * @return Voti con quel nome corso
 	 */
 	public Voto CercaVoto(String nome) {
+		Voto voto = new Voto(0, nome, null); //CREO UN OGGETTO NULLO A PARTE IL CAMPO CHE VOGLIO CERCARE = NOME ESAME
+		int pos = this.voti.indexOf(voto);  //Lista ritorna l'indice della posizione e vuole l'oggetto da cercare (ANCHE SE PARZIALMENTE)!!
 		
-		for(Voto v : this.voti) {
+		if(pos==-1)
+			return null;
+		else
+			return this.voti.get(pos);
+		
+		
+		
+		
+		/*for(Voto v : this.voti) {
 			if(v.getNomeCorso().equals(nome)) { // == confronta gli oggetti sul riferimento
 				return v;                      //equals verifica se il CONTENUTO è lo stesso
 			}
 		}
 		
-		return null;
+		return null;*/
 		
+	}
+	
+	/**
+	 * Dato un {@link Votot}, determina se esiste già un voto con uguale corso ed uguale punteggio
+	 * @param v
+	 * @return {@code true}, se ha trovato un corso e punteggio uguali,
+	 *         {@code false} se non ha trovato il corso, o con voto diverso
+	 */
+	public boolean esisteGiaVoto(Voto v) {
+		Voto trovato = this.CercaVoto(v.getNomeCorso());
+		
+		if(trovato==null) {
+			return false;
+		}
+		
+		if(trovato.getPunti()==v.getPunti()) {
+			return true;
+		}else {
+			return false; 
+		}
 	}
 
 }
