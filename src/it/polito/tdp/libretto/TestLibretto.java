@@ -50,6 +50,17 @@ public class TestLibretto {
 		
 		System.out.println(lib.toString());
 		
+		
+		System.out.println("***********************");
+		Libretto migliore = lib.librettoMiglioratoNuovoOggetto();
+		System.out.println(lib.toString());
+		System.out.println(migliore.toString());
+		
+		
+		migliore.cancellaVotiScarsi();
+		System.out.println(migliore);
+		
+		
 	}
 
 }

@@ -111,5 +111,49 @@ public class Libretto {
 		return this.voti.toString();
 	}
 	
+	
+	public Libretto librettoMiglioratoCopiaRiferimento() { //due versioni della stessa classe? facile crea un metodo per farlo!!
+		Libretto nuovo = new Libretto();
+		
+		for(Voto v : this.voti) { //COPIATO il RIFERIMENTO degli oggetti, non una copia degli oggetti!!
+			nuovo.add(v);
+		}
+		
+		for(Voto v: nuovo.voti) {
+			v.setPunti(v.getPunti()+1);
+		}
+		return nuovo;
+		
+		
+	}
+	
+	public Libretto librettoMiglioratoNuovoOggetto() { //due versioni della stessa classe? facile crea un metodo per farlo!!
+		Libretto nuovo = new Libretto();
+		
+		for(Voto v : this.voti) { //CREARE NUOVI OGGETTI = NEW!!!! CON IL NEW SI CREANO NUOVI OGGETTI. SENZA E' COPIA RIFERIMENTO!!!
+			nuovo.add(new Voto(v.getPunti(), v.getNomeCorso(), v.getData()));
+		}
+		
+		for(Voto v: nuovo.voti) {
+			v.setPunti(v.getPunti()+1);
+		}
+		return nuovo;
+		
+		//OPPURE DOTO L'OGGETTO DI UN METODO CLONE, ATTRAVERSO IL QUALE LUI STESSO RESTITUISCA UNA SUA COPIA (VEDI IN VOTO) 
+		        //v.clone();
+	}
+	
+	public void cancellaVotiScarsi() {
+		List<Voto> daCancellare = new ArrayList<Voto>();
+		
+		for(Voto v: this.voti) {
+			if(v.getPunti()<24) {
+				daCancellare.add(v); //salvo gli elemanti da cancellare, perchè non posso rimuovere mentre CICLO FOR
+			}
+		}
+		
+		this.voti.removeAll(daCancellare);
+		
+	}
 
 }
